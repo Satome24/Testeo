@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!-- Toolbar (inicialmente oculto) -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        android:visibility="gone" />
+
+    <!-- Contenedor principal usando FrameLayout como antes -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <!-- Contenido principal -->
+        <ScrollView
+            android:id="@+id/main_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp"
+            android:background="@android:color/white">
+
+            <LinearLayout
+                android:id="@+id/linearRoot"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal">
+
+                <!-- Título de la app -->
+                <TextView
+                    android:id="@+id/tvTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/app_name"
+                    android:textSize="20sp"
+                    android:padding="12dp"
+                    android:layout_marginBottom="12dp" />
+
+                <!-- BOTÓN Conectar Bluetooth -->
+                <Button
+                    android:id="@+id/btnConectarBluetooth"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="📱 Conectar Bluetooth"
+                    android:textSize="16sp"
+                    android:layout_marginBottom="12dp"
+                    android:padding="12dp" />
+
+                <!-- TextViews para mostrar datos -->
+                <TextView
+                    android:id="@+id/txtStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Estado: Desconectado"
+                    android:textSize="16sp"
+                    android:layout_marginTop="8dp" />
+
+                <TextView
+                    android:id="@+id/txtDistancia"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Distancia: N/A"
+                    android:textSize="16sp"
+                    android:layout_marginTop="4dp" />
+
+                <TextView
+                    android:id="@+id/txtHumedad"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Humedad: N/A"
+                    android:textSize="16sp"
+                    android:layout_marginTop="4dp" />
+
+                <!-- Contenedor para FirstFragment (monitorización de sonido) -->
+                <!-- Este FrameLayout se mantiene visible con el contenido principal -->
+                <FrameLayout
+                    android:id="@+id/fragment_container_first_fragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp" />
+
+                <!-- TextView para Nivel de Sonido (actualizado por FirstFragment o BLE) -->
+                <TextView
+                    android:id="@+id/txtNivelSonido"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nivel sonido: N/A"
+                    android:textSize="16sp"
+                    android:layout_marginTop="4dp" />
+
+                <!-- Botón Demo -->
+                <Button
+                    android:id="@+id/btnDemo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Demo"
+                    android:textSize="16sp"
+                    android:layout_marginTop="16dp"
+                    android:padding="12dp" />
+
+                <!-- Botón Guardar Punto -->
+                <Button
+                    android:id="@+id/btnGuardarPunto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Guardar Punto"
+                    android:textSize="16sp"
+                    android:layout_marginTop="12dp"
+                    android:padding="12dp" />
+
+                <!-- Botón Abrir Maps -->
+                <Button
+                    android:id="@+id/mapsButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="🗺️ Abrir Maps"
+                    android:textSize="16sp"
+                    android:layout_marginTop="12dp"
+                    android:padding="12dp" />
+
+            </LinearLayout>
+        </ScrollView>
+
+        <!-- Contenedor para fragments (usado para DevicesFragment) -->
+        <FrameLayout
+            android:id="@+id/fragment_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white"
+            android:visibility="gone" />
+
+    </FrameLayout>
+
+</LinearLayout>
